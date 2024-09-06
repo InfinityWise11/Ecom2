@@ -1,0 +1,195 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Basic styling */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-image: url('pink-flowers.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(10px);
+        /* Other properties... */
+    
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif; /* Custom font */
+
+    box-sizing: border-box; /* Ensures consistent box-sizing */
+}
+
+header {
+    background-color: #f2f2f2;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    position: sticky; /* or use 'fixed' if you prefer */
+    top: 0; /* Position at the top of the viewport */
+    left: 0;
+    right: inherit;
+    width: 100%; /* Stretch to full width */
+    background-color: #fc145a; /* Ensure the background covers the entire width */
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    z-index: 1000; /* Ensure it's above other content */
+    border-radius: 0;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+    margin-right: 20px;
+    position: relative;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+nav a::before {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: transparent;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    transform: scaleX(0);
+    transform-origin: left;
+    z-index: -1;
+}
+
+nav a:hover::before {
+    background-color: #fff;
+    transform: scaleX(1);
+}
+
+/* Add this rule to target the active link */
+nav a.active::before {
+    background-color: #fff;
+    transform: scaleX(1);
+}
+
+/* And this rule to maintain the active state while hovering */
+nav a.active:hover::before {
+    background-color: #fff;
+    transform: scaleX(1);
+}
+
+/* Main content */
+main {
+    flex-grow: 1;
+    padding: 10px 20px; /* Decrease the top padding */
+}
+
+/* Footer */
+footer {
+    background-color: #6e6e6e;
+    padding: 10px;
+    text-align: center;
+    width: 100%;
+    position: static; /* Default positioning */
+}
+
+
+/* Featured Products section */
+.featured-products {
+    padding: 20px;
+    margin: 10px 0; /* Margin for spacing */
+}
+
+/* Style only the headline with rounded corners */
+.featured-products h2 {
+    background-color: rgba(255, 0, 242, 0.548); /* Background color for the headline */
+    padding: 10px; /* Padding for the headline */
+    margin-top: 5px; /* Decrease the top margin */
+    border-radius: 15px; /* Rounded corners */
+    text-align: center; /* Center the headline text */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow to the headline */
+}
+
+
+/* Products grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Set 3 columns */
+    gap: 50px; /* Add gap between the columns */
+    width: 100%;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr); /* Adjust to 2 columns on medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid {
+        grid-template-columns: 1fr; /* Single column layout for smaller screens */
+    }
+}
+
+/* Product card */
+.product-card {
+    background-color: rgb(238, 141, 189);
+    position: relative; /* Establishes a positioning context for absolute children */
+    /* Other styles for the product card */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+
+.product-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.product-name {
+    margin: 10px;
+    text-align: center;
+}
+
+.product-price {
+    margin: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Hover effect for product cards */
+.product-card:hover {
+    transform: scale(1.02) translateY(-4px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+    z-index: 2; /* Higher z-index on hover */
+}
+
+.add-to-cart-btn {
+    background-color: #fc145a; /* Change to your preferred color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    position: absolute;
+    bottom: 10px; /* Distance from the bottom edge */
+    right: 10px; /* Distance from the right edge */
+    transition: background-color 0.3s ease;
+    z-index: 5; /* Ensure the button is above other elements */
+    /* Removed: opacity and transform styles that hid the button */
+}
+
+/* Removed: Hover styles for animating the button */
